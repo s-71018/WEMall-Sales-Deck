@@ -180,7 +180,7 @@ export default function App() {
       <AnimatePresence mode="wait">
         {stage === "hero" && (
           <motion.section key="hero" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.8 }} className="relative h-screen">
-            <video autoPlay loop muted playsInline className="absolute inset-0 h-full w-full object-cover">
+            <video autoPlay loop muted playsInline preload="auto" className="absolute inset-0 h-full w-full object-cover">
               <source src="/videos/hero.mp4" type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/20 to-black/65" />
