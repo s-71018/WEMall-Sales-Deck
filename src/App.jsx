@@ -148,6 +148,7 @@ export default function App() {
   const [ctaOpen, setCtaOpen] = useState(null);
   const [flyArrow, setFlyArrow] = useState(null);
   const [transitioningTo, setTransitioningTo] = useState(null); 
+  const [liftTransition, setLiftTransition] = useState(null);
 
   const playVoice = () => {
     const audio = new Audio("/audio/voiceover.mp3");
@@ -171,6 +172,21 @@ export default function App() {
       return () => clearTimeout(timer);
     }
   }, [stage]);
+
+  useEffect(() => {
+    if (!liftTransition) return;
+
+    const ding = new Audio("/audio/elevator.mp3");
+    ding.volume = 0.4;
+    ding.play();
+
+    const timer = setTimeout(() => {
+      setActiveModule(liftTransition.to);
+      setLiftTransition(null);
+    }, 1200); // match animation duration
+
+    return () => clearTimeout(timer);
+  }, [liftTransition]);
 
   const active = activeModule ? modules[activeModule] : null;
   const ActiveIcon = active?.icon || Building2;
@@ -419,6 +435,56 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AnimatePresence>
+        {liftTransition && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* DOORS */}
+            <motion.div
+              className="absolute left-0 top-0 h-full w-1/2 bg-black"
+              initial={{ x: 0 }}
+              animate={{ x: "-100%" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            />
+
+            <motion.div
+              className="absolute right-0 top-0 h-full w-1/2 bg-black"
+              initial={{ x: 0 }}
+              animate={{ x: "100%" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            />
+
+            {/* FLOOR DISPLAY */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="z-10 text-center text-white"
+            >
+              <p className="text-xs tracking-[0.4em] text-yellow-300">
+                MOVING TO
+              </p>
+
+              <motion.h1
+                className="text-6xl font-bold"
+                animate={{
+                  y: [0, -30, 0],
+                }}
+                transition={{
+                  duration: 0.8,
+                }}
+              >
+                {modules[liftTransition.to].level}
+              </motion.h1>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
@@ -450,7 +516,7 @@ function FloorSideNav({ setActiveModule }) {
     <div className="fixed right-0 top-1/2 z-50 hidden -translate-y-1/2 group md:block">
       <div className="flex flex-col gap-2 rounded-l-2xl border border-white/25 bg-black/40 p-2 backdrop-blur-xl">
         {floorLinks.map((item) => (
-          <button key={item.key} onClick={() => setActiveModule(item.key)} className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-white transition hover:bg-yellow-300 hover:text-black">
+          <button key={item.key} onClick={() => {  if (item.key === activeModule) return; setLiftTransition({from: activeModule,to: item.key,});}} className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-white transition hover:bg-yellow-300 hover:text-black">
             <span className="font-bold group-hover:hidden">{item.level.replace("LEVEL ", "")}</span>
             <span className="hidden whitespace-nowrap group-hover:block">{item.level} — {item.label}</span>
           </button>
@@ -459,3 +525,4 @@ function FloorSideNav({ setActiveModule }) {
     </div>
   );
 }
+
