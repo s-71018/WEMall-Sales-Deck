@@ -5,14 +5,14 @@ https://wemall-sales-deck.vercel.app/
 
 ---
 
-## 🧠 Concept
+## Concept
 This project reimagines a traditional presentation deck as an immersive, interactive digital experience.
 
 Instead of static slides, the experience is structured as a spatial journey through the mall, where each "floor" represents a business opportunity (Retail, Luxury, Dining, Attractions, Events, Sponsorship).
 
 ---
 
-## 🎯 Design Approach
+## Design Approach
 - Story-driven navigation (Hero → Entry → Floors → Modules)
 - Spatial metaphor (floors + elevator transition)
 - Cinematic transitions (arrow flight, lift movement)
@@ -21,7 +21,7 @@ Instead of static slides, the experience is structured as a spatial journey thro
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 - React (Vite)
 - Tailwind CSS
 - Framer Motion (animations)
@@ -29,14 +29,14 @@ Instead of static slides, the experience is structured as a spatial journey thro
 
 ---
 
-## 🤖 AI Tools Used
+## AI Tools Used
 - Video generation (Runway / Pika)
 - Voice generation (Elevenlabs)
 - AI-assisted video clipping tools
 
 ---
 
-## 🚀 Features
+## Features
 - Cinematic hero entry
 - Floor-based navigation system
 - Elevator-style transitions between modules
@@ -46,7 +46,7 @@ Instead of static slides, the experience is structured as a spatial journey thro
 
 ---
 
-## ⚡ Setup Instructions
+## Setup Instructions
 
 ```bash
 npm install
