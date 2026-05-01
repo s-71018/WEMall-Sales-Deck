@@ -240,7 +240,7 @@ export default function App() {
 
         {stage === "floors" && (
           <motion.section key="floors" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.8 }} className="relative h-screen overflow-y-auto md:overflow-hidden">
-            <video autoPlay muted playsInline className="absolute inset-0 h-full w-full object-cover" onPlay={() => { setTimeout(() => {setShowFloorSigns(true); }, 5800);  }}>
+            <video autoPlay muted playsInline className="absolute inset-0 h-full w-full object-cover" onPlay={() => { setTimeout(() => {setShowFloorSigns(true); }, 2500);  }}>
               <source src="/videos/floors.mp4" type="video/mp4" />
             </video>
 
