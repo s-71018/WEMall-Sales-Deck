@@ -179,7 +179,7 @@ export default function App() {
     const ding = new Audio("/audio/elevator.mp3");
     ding.volume = 0.4;
     ding.play();
-
+    
     const timer = setTimeout(() => {
       setActiveModule(liftTransition.to);
       setLiftTransition(null);
@@ -316,7 +316,7 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/30" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,213,91,0.22),transparent_35%)]" />
 
-            <FloorSideNav setActiveModule={setActiveModule} />
+            <FloorSideNav setActiveModule={setActiveModule} setLiftTransition={setLiftTransition} activeModule={activeModule} />
 
             <button onClick={() => setActiveModule(null)} className="absolute right-5 top-5 z-50 rounded-full border border-white/35 bg-black/45 px-4 py-2 text-sm backdrop-blur-xl transition hover:bg-yellow-300 hover:text-black md:right-8 md:top-8 md:px-5 md:py-3">
               <X className="mr-2 inline" size={16} />
@@ -511,7 +511,7 @@ function Header() {
   );
 }
 
-function FloorSideNav({ setActiveModule }) {
+function FloorSideNav({ setActiveModule, setLiftTransition, activeModule }) {
   return (
     <div className="fixed right-0 top-1/2 z-50 hidden -translate-y-1/2 group md:block">
       <div className="flex flex-col gap-2 rounded-l-2xl border border-white/25 bg-black/40 p-2 backdrop-blur-xl">
