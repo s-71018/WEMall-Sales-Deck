@@ -13,7 +13,7 @@ Instead of static slides, the experience is structured as a spatial journey thro
 ---
 
 ## Design Approach
-- Story-driven navigation (Hero → Entry → Floors → Modules)
+- Story-driven navigation 
 - Spatial metaphor (floors + elevator transition)
 - Cinematic transitions (arrow flight, lift movement)
 - Minimal text, high visual impact
@@ -41,7 +41,7 @@ Instead of static slides, the experience is structured as a spatial journey thro
 - Floor-based navigation system
 - Elevator-style transitions between modules
 - Animated arrow-driven interactions
-- Responsive design (desktop + laptop)
+- Responsive design 
 - Performance-optimized video loading
 
 ---
