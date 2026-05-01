@@ -28,7 +28,7 @@ const modules = {
     title: "A commercial city built inside a destination.",
     video: "/videos/interior.mp4",
     icon: Building2,
-    text: "West Edmonton Mall combines retail, attractions, hotels, dining, tourism, and year-round programming into one high-traffic destination platform.",
+    text: "A high-traffic destination combining retail, attractions, and experiences.",
     points: ["30M+ annual visitors", "800+ stores & services", "16 major attractions", "2 hotels on property"],
     cta: "Start a business conversation",
   },
@@ -350,9 +350,6 @@ export default function App() {
                 {active.points.map((point, index) => (
                   <motion.div key={point} initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.08 }} className="readable-card rounded-3xl p-5 md:p-6">
                     <p className="text-lg font-semibold md:text-xl">{point}</p>
-                    <p className="mt-3 text-sm leading-6 text-white/80">
-                      Designed to push prospects toward leasing, sponsorship, event booking, or partnership action.
-                    </p>
                   </motion.div>
                 ))}
               </div>
